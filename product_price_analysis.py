@@ -265,11 +265,15 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import font_manager
 
 # =========================
 # 全局样式
 # =========================
-plt.rcParams['font.family'] = ['SimHei']
+# 加载同级目录的 SimHei.ttf
+my_font = font_manager.FontProperties(fname="SimHei.ttf")
+
+plt.rcParams['font.family'] = my_font.get_name()
 plt.rcParams['axes.unicode_minus'] = False
 
 st.set_page_config(page_title="产品价格差额可视化", layout="wide")
@@ -372,3 +376,4 @@ if uploaded_file is not None:
                 ax2.grid(axis='y', linestyle='--', alpha=0.3)
                 plt.tight_layout()
                 st.pyplot(fig2)
+
