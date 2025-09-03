@@ -3,13 +3,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import font_manager
+import os
 
 # =========================
 # 全局样式
 # =========================
-# 加载同级目录的 SimHei.ttf
-my_font = font_manager.FontProperties(fname="SimHei.ttf")
+# 获取当前脚本目录
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+font_path = os.path.join(BASE_DIR, "SimHei.ttf")
 
+# 加载中文字体
+my_font = font_manager.FontProperties(fname=font_path)
 plt.rcParams['font.family'] = my_font.get_name()
 plt.rcParams['axes.unicode_minus'] = False
 
@@ -34,7 +38,7 @@ if uploaded_file is not None:
             products = df['产品名'].tolist()
             n_products = len(products)
             x = np.arange(n_products)
-            width = 0.8 / len(dealer_cols)  # 每个经销商宽度均分
+            width = 0.8 / len(dealer_cols)
 
             # =========================
             # 静态柱状图（显示所有经销商价格）
@@ -113,5 +117,7 @@ if uploaded_file is not None:
                 ax2.grid(axis='y', linestyle='--', alpha=0.3)
                 plt.tight_layout()
                 st.pyplot(fig2)
+
+
 
 
