@@ -45,7 +45,7 @@ if uploaded_file is not None:
             ax1.set_xticklabels(products, rotation=0, ha='center', fontsize=10, fontproperties=my_font)
             ax1.set_ylabel('价格', fontsize=11, fontproperties=my_font)
             ax1.set_title('静态产品价格（所有经销商）', fontsize=14, fontproperties=my_font)
-            ax1.legend(fontsize=10)
+            ax1.legend(fontsize=10, prop=my_font)
             ax1.grid(axis='y', linestyle='--', alpha=0.3)
             plt.tight_layout()
             st.pyplot(fig1)
@@ -104,3 +104,4 @@ if uploaded_file is not None:
                 ax2.grid(axis='y', linestyle='--', alpha=0.3)
                 plt.tight_layout()
                 st.pyplot(fig2)
+
